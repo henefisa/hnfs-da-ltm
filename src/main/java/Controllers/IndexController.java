@@ -1,9 +1,12 @@
 package Controllers;
 
+import Main.AdminClient;
 import Main.UserClient;
 import Models.User;
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
+
+import java.io.IOException;
 
 public class IndexController {
 

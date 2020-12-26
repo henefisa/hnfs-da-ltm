@@ -19,15 +19,10 @@ public class UserImpl extends UnicastRemoteObject implements IUser {
     }
 
     @Override
-    public User login(String username, String password){
+    public User login(String username, String password) {
         User user = userDA.loginUser(username, password);
         if (user != null) System.out.println("Login success!");
         return user;
 
-    }
-
-    @Override
-    public boolean get(String id) throws RemoteException {
-        return false;
     }
 }

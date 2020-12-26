@@ -16,7 +16,11 @@ public class Exam implements Externalizable {
     public Exam() {
     }
 
-    public Exam(String id, String name){
+    public Exam(String name) {
+        setName(name);
+    }
+
+    public Exam(String id, String name) {
         setId(id);
         setName(name);
     }
@@ -25,24 +29,24 @@ public class Exam implements Externalizable {
         return id.get();
     }
 
-    public StringProperty idProperty() {
-        return id;
-    }
-
     public void setId(String id) {
         this.id.set(id);
+    }
+
+    public StringProperty idProperty() {
+        return id;
     }
 
     public String getName() {
         return name.get();
     }
 
-    public StringProperty nameProperty() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name.set(name);
+    }
+
+    public StringProperty nameProperty() {
+        return name;
     }
 
     @Override

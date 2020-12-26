@@ -19,6 +19,17 @@ public class Questions implements Externalizable {
     private final StringProperty answer_true = new SimpleStringProperty();
     private final StringProperty exam_id = new SimpleStringProperty();
 
+    public Questions(String id, String question, String answer1, String answer2, String answer3, String answer4, String answer_true, String exam_id) {
+        setId(id);
+        setQuestion(question);
+        setAnswer1(answer1);
+        setAnswer2(answer2);
+        setAnswer3(answer3);
+        setAnswer4(answer4);
+        setAnswer_true(answer_true);
+        setExam_id(exam_id);
+    }
+
     public String getId() {
         return id.get();
     }

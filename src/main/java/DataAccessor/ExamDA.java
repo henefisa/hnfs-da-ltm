@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class ExamDA {
-    private boolean createExam(Exam exam) {
+    public boolean createExam(Exam exam) {
         String sql = "insert into Exam values(?, ?)";
         boolean rowInserted = false;
         try {
@@ -30,7 +30,7 @@ public class ExamDA {
         return rowInserted;
     }
 
-    private List<Exam> getExams() {
+    public List<Exam> getExams() {
         List<Exam> exams = new ArrayList<>();
         String sql = "select * from Exam";
 
