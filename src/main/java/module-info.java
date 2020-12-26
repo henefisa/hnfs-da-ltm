@@ -3,6 +3,7 @@ module LTMDA {
     requires javafx.fxml;
     requires java.sql;
     requires java.rmi;
+    requires bcrypt;
 
     opens Main to javafx.fxml;
     exports Main;
@@ -10,4 +11,5 @@ module LTMDA {
     exports Controllers;
     exports Server;
     exports API;
+    exports Models;
 }

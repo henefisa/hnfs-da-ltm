@@ -5,35 +5,26 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectDB {
-    private String url;
-    private String username;
-    private String password;
-    private Connection connection;
+    private static Connection connection;
 
-    public ConnectDB(String url, String username, String password) {
-        this.url = url;
-        this.username = username;
-        this.password = password;
-    }
-
-    public void connect() throws SQLException {
+    public static void connect() throws SQLException {
         if (connection == null || connection.isClosed()) {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
             } catch (ClassNotFoundException e) {
                 throw new SQLException(e);
             }
-            connection = DriverManager.getConnection(url, username, password);
+            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/LTM", "root", "henefisa103");
         }
     }
 
-    public void disconnect() throws SQLException {
+    public static void disconnect() throws SQLException {
         if (connection != null || !connection.isClosed()) {
             connection.close();
         }
     }
 
-    public Connection getConnection() {
+    public static Connection getConnection() {
         return connection;
     }
 }
