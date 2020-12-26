@@ -7,14 +7,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="576.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="576.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AdminController">
    <children>
       <Label layoutX="197.0" layoutY="46.0" text="DANH SÁCH BÀI THI" underline="true">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Button layoutX="68.0" layoutY="98.0" mnemonicParsing="false" text="THÊM BÀI THI" />
+      <Button layoutX="68.0" layoutY="98.0" mnemonicParsing="false" onAction="#switchToCreate" text="THÊM BÀI THI" />
       <Button layoutX="380.0" layoutY="98.0" mnemonicParsing="false" text="THOÁT CHƯƠNG TRÌNH" />
       <TableView layoutX="68.0" layoutY="148.0" prefHeight="200.0" prefWidth="464.0">
         <columns>
