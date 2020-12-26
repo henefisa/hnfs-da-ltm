@@ -1,6 +1,7 @@
 package Main;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -29,5 +30,11 @@ public class AdminClient extends Application {
         scene = new Scene(loadFXML("Admin"), 640, 480);
         stage.setScene(scene);
         stage.show();
+    }
+
+
+
+
+    public void handleNew(ActionEvent actionEvent) {
     }
 }

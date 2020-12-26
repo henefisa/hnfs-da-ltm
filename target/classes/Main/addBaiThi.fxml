@@ -17,7 +17,7 @@
          </font>
       </Label>
       <Button layoutX="115.0" layoutY="364.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="101.0" text="Thêm Bài Thi" />
-      <Button layoutX="409.0" layoutY="364.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="62.0" text="Quay Lại" />
+      <Button layoutX="409.0" layoutY="364.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="92.0" text="Quay Lại" />
       <Label layoutX="46.0" layoutY="91.0" text="Câu số : ">
          <font>
             <Font size="14.0" />
@@ -48,8 +48,7 @@
       <TextField layoutX="149.0" layoutY="242.0" />
       <TextField layoutX="149.0" layoutY="278.0" />
       <TextField layoutX="380.0" layoutY="278.0" />
-      <Button layoutX="230.0" layoutY="364.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="70.0" text="Chỉnh Sửa" />
-      <Button layoutX="331.0" layoutY="364.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="37.0" text="Xóa" />
+      <Button layoutX="276.0" layoutY="364.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="92.0" text="Xóa" />
       <Label layoutX="44.0" layoutY="404.0" text="Danh Sách Câu Hỏi">
          <font>
             <Font size="14.0" />
