@@ -16,11 +16,10 @@
       </Label>
       <Button layoutX="68.0" layoutY="98.0" mnemonicParsing="false" onAction="#switchToCreate" text="THÊM BÀI THI" />
       <Button layoutX="380.0" layoutY="98.0" mnemonicParsing="false" text="THOÁT CHƯƠNG TRÌNH" />
-      <TableView layoutX="68.0" layoutY="148.0" prefHeight="200.0" prefWidth="464.0">
+      <TableView fx:id="tableExam" layoutX="68.0" layoutY="148.0" prefHeight="200.0" prefWidth="464.0">
         <columns>
-          <TableColumn prefWidth="124.0" text="Tên Bài Thi" />
-          <TableColumn prefWidth="178.0" text="Xóa" />
-            <TableColumn prefWidth="161.0" text="Điểm sinh viên" />
+          <TableColumn fx:id="tenColumn" prefWidth="193.0" text="Tên Bài Thi" />
+            <TableColumn prefWidth="270.0" text="Điểm sinh viên" />
         </columns>
       </TableView>
    </children>
