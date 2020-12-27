@@ -14,7 +14,7 @@ public class ConnectDB {
             } catch (ClassNotFoundException e) {
                 throw new SQLException(e);
             }
-            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/LTM", "root", "123456");
+            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/LTM", "root", "henefisa103");
         }
     }
 

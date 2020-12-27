@@ -44,5 +44,4 @@ public class ExamController {
     private void cancelCreate() throws IOException {
         AdminClient.setRoot("Admin");
     }
-
 }

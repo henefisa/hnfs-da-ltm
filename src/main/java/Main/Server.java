@@ -1,4 +1,4 @@
-package Server;
+package Main;
 
 import API.*;
 
@@ -8,13 +8,8 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
-public class Server extends UnicastRemoteObject implements IServer {
-    private HashMap<String, List<Examiner>> exams;
-
+public class Server extends UnicastRemoteObject {
     protected Server() throws RemoteException {
     }
 
@@ -23,32 +18,17 @@ public class Server extends UnicastRemoteObject implements IServer {
             IUser rUser = new UserImpl();
             IExam rExam = new ExamImpl();
             IQuestion rQuestion=new QuestionImpl();
+            IExamServer rExamServer = new ExamServerImpl();
             LocateRegistry.createRegistry(9090);
             //đăng ký đối tượng này với rmiregistry
             Naming.bind("rmi://localhost:9090/user", rUser);
             Naming.bind("rmi://localhost:9090/exam", rExam);
             Naming.bind("rmi://localhost:9090/questions",rQuestion);
+            Naming.bind("rmi://localhost:9090/examServer", rExamServer);
             System.out.println("Server started");
         } catch (RemoteException | MalformedURLException | AlreadyBoundException e) {
             e.printStackTrace();
         }
     }
 
-    @Override
-    public String sayHello(String name) throws RemoteException {
-        return null;
-    }
-
-    @Override
-    public void registerExaminer(String examName, Examiner examiner) throws RemoteException {
-        List<Examiner> exam = exams.get(examName);
-        if (exam != null) {
-            exam.add(examiner);
-        } else {
-            exam = new ArrayList<>();
-            exam.add(examiner);
-
-        }
-        exams.put(examName, exam);
-    }
 }

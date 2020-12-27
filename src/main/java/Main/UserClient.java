@@ -12,7 +12,6 @@ import java.io.IOException;
 public class UserClient extends Application {
     private static User user;
     private static Scene scene;
-
     public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }

@@ -2,16 +2,16 @@ package API;
 
 import DataAccessor.ExamDA;
 import Models.Exam;
-
-
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
 public class ExamImpl extends UnicastRemoteObject implements IExam {
     private final ExamDA examDA;
+
     public ExamImpl() throws RemoteException {
         this.examDA = new ExamDA();
+
     }
 
     @Override
@@ -24,5 +24,9 @@ public class ExamImpl extends UnicastRemoteObject implements IExam {
         return examDA.getExams();
     }
 
+    @Override
+    public void printMessage(String message) throws RemoteException {
+        System.out.println(message);
+    }
 
 }

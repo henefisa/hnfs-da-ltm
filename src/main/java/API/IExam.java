@@ -7,7 +7,9 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 public interface IExam extends Remote {
-    public boolean createExam(Exam exam) throws RemoteException;
+    boolean createExam(Exam exam) throws RemoteException;
 
-    public List<Exam> getExams() throws RemoteException;
+    List<Exam> getExams() throws RemoteException;
+
+    void printMessage(String message) throws RemoteException;
 }
