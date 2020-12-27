@@ -35,7 +35,7 @@ public class ExamController {
 
     @FXML
     private void cancelCreate() throws IOException {
-        AdminClient.setRoot("index");
+        AdminClient.setRoot("Admin");
     }
 
 }
