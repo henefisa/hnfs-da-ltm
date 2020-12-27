@@ -98,4 +98,34 @@ public class QuestionsDA {
         }
         return questions;
     }
+
+    public List<Questions> getQuestionByExamId(String i_exam_id) {
+        String sql = "select * from Questions where exam_id = " + i_exam_id;
+        List<Questions> questions = new ArrayList<>();
+        try {
+            ConnectDB.connect();
+            Statement statement = ConnectDB.getConnection().createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            while (resultSet.next()) {
+                String id = resultSet.getString("id");
+                String question = resultSet.getString("question");
+                String answer1 = resultSet.getString("answer1");
+                String answer2 = resultSet.getString("answer2");
+                String answer3 = resultSet.getString("answer3");
+                String answer4 = resultSet.getString("answer4");
+                String answer_true = resultSet.getString("answer_true");
+                String exam_id = resultSet.getString("exam_id");
+                Questions questions_item = new Questions(id, question, answer1, answer2, answer3, answer4, answer_true, exam_id);
+                questions.add(questions_item);
+            }
+
+            resultSet.close();
+            statement.close();
+            ConnectDB.disconnect();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return questions;
+    }
 }

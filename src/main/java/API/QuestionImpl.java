@@ -28,4 +28,11 @@ public class QuestionImpl extends UnicastRemoteObject implements IQuestion {
     public Questions getQuestion(String id) throws RemoteException {
         return questionsDA.getQuestion(id);
     }
+
+    @Override
+    public List<Questions> getQuestionByExamID(String i_exam_id) throws RemoteException {
+        return questionsDA.getQuestionByExamId(i_exam_id);
+    }
+
+
 }

@@ -11,4 +11,5 @@ public interface IQuestion extends Remote {
     boolean createQuestion(Questions questions) throws RemoteException;
     List<Questions> getQuestions() throws RemoteException;
     Questions getQuestion(String id) throws RemoteException;
+    List<Questions> getQuestionByExamID(String i_exam_id) throws RemoteException;
 }
