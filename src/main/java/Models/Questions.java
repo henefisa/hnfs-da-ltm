@@ -2,6 +2,7 @@ package Models;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.beans.value.ObservableValue;
 
 import java.io.Externalizable;
 import java.io.IOException;
@@ -149,4 +150,6 @@ public class Questions implements Externalizable {
         setAnswer_true((String) in.readObject());
         setExam_id((String) in.readObject());
     }
+
+
 }
