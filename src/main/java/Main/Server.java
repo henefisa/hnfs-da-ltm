@@ -17,13 +17,13 @@ public class Server extends UnicastRemoteObject {
         try {
             IUser rUser = new UserImpl();
             IExam rExam = new ExamImpl();
-            IQuestion rQuestion=new QuestionImpl();
+            IQuestion rQuestion = new QuestionImpl();
             IExamServer rExamServer = new ExamServerImpl();
             LocateRegistry.createRegistry(9090);
             //đăng ký đối tượng này với rmiregistry
             Naming.bind("rmi://localhost:9090/user", rUser);
             Naming.bind("rmi://localhost:9090/exam", rExam);
-            Naming.bind("rmi://localhost:9090/questions",rQuestion);
+            Naming.bind("rmi://localhost:9090/questions", rQuestion);
             Naming.bind("rmi://localhost:9090/examServer", rExamServer);
             System.out.println("Server started");
         } catch (RemoteException | MalformedURLException | AlreadyBoundException e) {

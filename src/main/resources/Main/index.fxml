@@ -46,7 +46,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button layoutX="137.0" layoutY="77.0" mnemonicParsing="false" text="Bắt Đầu" />
+            <Button layoutX="137.0" layoutY="77.0" mnemonicParsing="false" onAction="#startExam" text="Bắt Đầu" />
             <Button layoutX="137.0" layoutY="111.0" mnemonicParsing="false" text="Bắt đầu" />
          </children>
       </Pane>

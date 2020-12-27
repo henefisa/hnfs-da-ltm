@@ -1,44 +1,53 @@
 package API;
 
-import API.IExam;
-import API.IExamServer;
+import Main.UserClient;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 public class ExamServerImpl extends UnicastRemoteObject implements IExamServer {
-    private HashMap<String, List<IExam>> exams;
+    public static HashMap<String, List<Examiner>> exams;
 
     public ExamServerImpl() throws RemoteException {
-        this.exams = new HashMap<>();
+        exams = new HashMap<>();
     }
-
-//    @Override
-//    public void registerExaminer(String examName, Examiner examiner) throws RemoteException {
-////        List<Examiner> exam = exams.get(examName);
-//        if (exam == null) {
-//            exam = new ArrayList<>();
-//        }
-//        exam.add(examiner);
-//        exams.put(examName, exam);
-//    }
-
-//    @Override
-//    public void sayHello(String id) throws RemoteException {
-//
-//    }
 
     @Override
     public void register(String id, IExam iExam) throws RemoteException {
-        List<IExam> exam = exams.get(id);
-        if (exam == null) {
-            exam = new ArrayList<>();
+        if (exams.get(id) == null) {
+            exams.put(id, new ArrayList<>());
         }
-        exam.add(iExam);
-        exams.put(id, exam);
-        iExam.printMessage("123");
+        UUID uuid = UUID.randomUUID();
+        Examiner examiner = new Examiner(uuid.toString(), iExam);
+        UserClient.setExaminer_id(uuid.toString());
+        UserClient.setExam_id(id);
+        exams.get(id).add(examiner);
+        exams.get(id).forEach(e -> {
+            try {
+                e.getiExam().printMessage(String.valueOf(exams.get(id).size()));
+            } catch (RemoteException remoteException) {
+                remoteException.printStackTrace();
+            }
+        });
+    }
+
+    @Override
+    public void unregister() throws RemoteException {
+        List<Examiner> exam = exams.get(UserClient.getExam_id());
+        if (exam != null) {
+            for (int i = 0; i < exam.size(); i++) {
+                boolean same = exam.get(i).getId().equals(UserClient.getExaminer_id());
+                System.out.println(UserClient.getExaminer_id());
+                if (same) {
+                    exam.remove(i);
+                    System.out.println("Some user disconnected!");
+                }
+            }
+        }
+
     }
 }
