@@ -1,6 +1,9 @@
 package Server;
 
-import API.*;
+import API.ExamImpl;
+import API.IExam;
+import API.IUser;
+import API.UserImpl;
 
 import java.net.MalformedURLException;
 import java.rmi.AlreadyBoundException;
@@ -8,8 +11,12 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class Server extends UnicastRemoteObject implements IServer {
+    private HashMap<String, List<Examiner>> exams;
 
     protected Server() throws RemoteException {
     }
@@ -34,7 +41,15 @@ public class Server extends UnicastRemoteObject implements IServer {
     }
 
     @Override
-    public void registerExaminer() throws RemoteException {
+    public void registerExaminer(String examName, Examiner examiner) throws RemoteException {
+        List<Examiner> exam = exams.get(examName);
+        if (exam != null) {
+            exam.add(examiner);
+        } else {
+            exam = new ArrayList<>();
+            exam.add(examiner);
 
+        }
+        exams.put(examName, exam);
     }
 }
