@@ -31,6 +31,10 @@ public class Questions implements Externalizable {
         setExam_id(exam_id);
     }
 
+    public Questions() {
+
+    }
+
     public String getId() {
         return id.get();
     }
