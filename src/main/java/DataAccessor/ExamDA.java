@@ -3,17 +3,15 @@ package DataAccessor;
 import Models.Exam;
 import Utils.ConnectDB;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 public class ExamDA {
     public boolean createExam(Exam exam) {
-        String sql = "insert into Exam values(?, ?)";
+        String sql = "insert into Exam values(?,?,?,?,?)";
         boolean rowInserted = false;
         try {
             ConnectDB.connect();
@@ -21,6 +19,9 @@ public class ExamDA {
             PreparedStatement statement = ConnectDB.getConnection().prepareStatement(sql);
             statement.setString(1, uuid.toString());
             statement.setString(2, exam.getName());
+            statement.setInt(3,exam.getDuration());
+            statement.setDate(4, Date.valueOf(exam.getStartTime().toString()));
+            statement.setBoolean(5,exam.isCheckTime());
             rowInserted = statement.executeUpdate() > 0;
             statement.close();
             ConnectDB.disconnect();
@@ -42,8 +43,12 @@ public class ExamDA {
             while (resultSet.next()) {
                 String id = resultSet.getString("id");
                 String name = resultSet.getString("name");
+                int duration =resultSet.getInt("duration");
+                Date startTime=resultSet.getDate("startTime");
+                LocalDate date=startTime.toLocalDate();
+                Boolean checkTime=resultSet.getBoolean("checkTime");
+                Exam exam = new Exam(id, name,duration,date,checkTime);
 
-                Exam exam = new Exam(id, name);
                 exams.add(exam);
             }
 

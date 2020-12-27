@@ -38,7 +38,7 @@ public class QuestionsDA {
 
     public List<Questions> getQuestions() {
         List<Questions> questions = new ArrayList<>();
-        String sql = "select * from Exam";
+        String sql = "select * from question where exam_id ='13380362-6dba-4da6-a519-083af2decfef'   ";
 
         try {
             ConnectDB.connect();

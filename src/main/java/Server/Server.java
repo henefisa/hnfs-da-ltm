@@ -1,9 +1,6 @@
 package Server;
 
-import API.ExamImpl;
-import API.IExam;
-import API.IUser;
-import API.UserImpl;
+import API.*;
 
 import java.net.MalformedURLException;
 import java.rmi.AlreadyBoundException;
@@ -25,10 +22,12 @@ public class Server extends UnicastRemoteObject implements IServer {
         try {
             IUser rUser = new UserImpl();
             IExam rExam = new ExamImpl();
+            IQuestion rQuestion=new QuestionImpl();
             LocateRegistry.createRegistry(9090);
             //đăng ký đối tượng này với rmiregistry
             Naming.bind("rmi://localhost:9090/user", rUser);
             Naming.bind("rmi://localhost:9090/exam", rExam);
+            Naming.bind("rmi://localhost:9090/questions",rQuestion);
             System.out.println("Server started");
         } catch (RemoteException | MalformedURLException | AlreadyBoundException e) {
             e.printStackTrace();

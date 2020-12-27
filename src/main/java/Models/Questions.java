@@ -33,9 +33,14 @@ public class Questions implements Externalizable {
         setAnswer_true(answer_true);
         setExam_id(exam_id);
     }
-
-    public Questions() {
-
+    public Questions( String question, String answer1, String answer2, String answer3, String answer4, String answer_true, String exam_id) {
+        setQuestion(question);
+        setAnswer1(answer1);
+        setAnswer2(answer2);
+        setAnswer3(answer3);
+        setAnswer4(answer4);
+        setAnswer_true(answer_true);
+        setExam_id(exam_id);
     }
 
     public String getId() {

@@ -1,5 +1,7 @@
 package Controllers;
 
+import API.IExam;
+import API.IQuestion;
 import Main.AdminClient;
 import Models.Questions;
 import javafx.collections.FXCollections;
@@ -13,9 +15,13 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 
 
-public class ExamQuestions {
+public class QuestionsController {
 
     @FXML
     private TextField id;
@@ -29,16 +35,16 @@ public class ExamQuestions {
     private boolean okClicked = false;
     @FXML private Button buttonADD=new Button();
     @FXML
-    private TableView<Questions> QuestionTable;
+    private TableView<Questions> questionTable;
     @FXML
     private TableColumn<Questions, String> questionColumn;
     @FXML
     private TableColumn<Questions, String> questionTrueColumn;
     @FXML private  TableColumn<Questions,String> questionIndexColumn;
-    private ObservableList<Questions> QuestionData = FXCollections.observableArrayList();
+    private ObservableList<Questions> questionData = FXCollections.observableArrayList();
     private Stage dialogStage;
-    public ExamQuestions() {
-        QuestionData.addListener(new ListChangeListener<Questions>() {
+    public QuestionsController() {
+        questionData.addListener(new ListChangeListener<Questions>() {
             @Override
             public void onChanged(Change<? extends Questions> c) {
             }
@@ -46,13 +52,23 @@ public class ExamQuestions {
 
     }
     @FXML
-    private void initialize() {
+    private void initialize() throws RemoteException, NotBoundException, MalformedURLException {
+
+
+            IQuestion iQuestion = (IQuestion) Naming.lookup("rmi://localhost:9090/questions");
+
+            questionData=FXCollections.observableArrayList(iQuestion.getQuestion());
+        System.out.println(questionData);
+            questionTable.getItems().addAll(questionData);
+
+
+
         questionColumn.setCellValueFactory(
                 cellData -> cellData.getValue().questionProperty());
         questionTrueColumn.setCellValueFactory((
                 cellData -> cellData.getValue().answer_trueProperty()));
         showQuestionDetails(null);
-        QuestionTable.getSelectionModel().selectedItemProperty().addListener(
+        questionTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> showQuestionDetails(newValue));
     }
 
@@ -84,18 +100,21 @@ public class ExamQuestions {
 
 
 
-    public void handleADD(ActionEvent actionEvent) {
-        questions.setQuestion(question.getText());
-        questions.setAnswer1((answer1.getText()));
-        questions.setAnswer2(answer2.getText());
-        questions.setAnswer3(answer3.getText());
-        questions.setAnswer4((answer4.getText()));
-        questions.setAnswer_true((answer_true.getText()));
-        okClicked = true;
-        Questions tempPerson = new Questions();
-        if (okClicked) {
-//            personData.addAll(tempPerson);
-            QuestionData.addAll(tempPerson);
+    public void handleADD(ActionEvent actionEvent)throws IOException {
+
+        Questions tempPerson = new Questions(question.getText(),answer1.getText(),answer2.getText(),
+                answer3.getText(),answer4.getText(),answer_true.getText(),"13380362-6dba-4da6-a519-083af2decfef");
+        boolean success = false;
+        try {
+            IQuestion iQuestion = (IQuestion) Naming.lookup("rmi://localhost:9090/questions");
+            success = iQuestion.createQuestion(tempPerson);
+        } catch (RemoteException | NotBoundException | MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        if (success) {
+            System.out.println("Create success!");
+//            AdminClient.setRoot("Admin");
         }
     }
     public void Buttonok(KeyEvent keyEvent){

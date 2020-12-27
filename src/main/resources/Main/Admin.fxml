@@ -18,8 +18,10 @@
       <Button layoutX="380.0" layoutY="98.0" mnemonicParsing="false" text="THOÁT CHƯƠNG TRÌNH" />
       <TableView fx:id="tableExam" layoutX="68.0" layoutY="148.0" prefHeight="200.0" prefWidth="464.0">
         <columns>
-          <TableColumn fx:id="tenColumn" prefWidth="193.0" text="Tên Bài Thi" />
-            <TableColumn prefWidth="270.0" text="Điểm sinh viên" />
+          <TableColumn fx:id="tenColumn" prefWidth="127.0" text="Tên Bài Thi" />
+            <TableColumn fx:id="durationColumn" prefWidth="69.0" text="Thời gian" />
+            <TableColumn fx:id="startTimeColumn" prefWidth="142.0" text="Thời gian bắt đàu" />
+            <TableColumn fx:id="checkTimeColumn" prefWidth="73.0" text="Trạng thái" />
         </columns>
       </TableView>
    </children>

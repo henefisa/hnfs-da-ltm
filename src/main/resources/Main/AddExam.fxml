@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -17,11 +19,13 @@
       </Text>
       <TextField fx:id="name" layoutX="292.0" layoutY="146.0" />
       <Label layoutX="178.0" layoutY="150.0" text="Tên bài thi" />
-      <ButtonBar layoutX="192.0" layoutY="231.0" prefHeight="40.0" prefWidth="200.0">
-        <buttons>
-          <Button mnemonicParsing="false" onAction="#createExam" text="Thêm" />
-            <Button mnemonicParsing="false" onAction="#cancelCreate" text="Huỷ" />
-        </buttons>
-      </ButtonBar>
+      <ButtonBar layoutX="192.0" layoutY="231.0" prefHeight="40.0" prefWidth="200.0" />
+      <Label layoutX="183.0" layoutY="183.0" text="Duration" />
+      <Label layoutX="183.0" layoutY="214.0" text="StartTime" />
+      <TextField fx:id="duration" layoutX="292.0" layoutY="179.0" />
+    <Button layoutX="234.0" layoutY="305.0" mnemonicParsing="false" onAction="#createExam" text="Thêm" />
+      <Button layoutX="336.0" layoutY="305.0" mnemonicParsing="false" onAction="#cancelCreate" text="Huỷ" />
+      <DatePicker fx:id="startTime" layoutX="292.0" layoutY="210.0" prefHeight="25.0" prefWidth="149.0" />
+      <CheckBox fx:id="checkTime" layoutX="292.0" layoutY="263.0" mnemonicParsing="false" text="CheckBox" />
    </children>
 </AnchorPane>

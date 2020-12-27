@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="606.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ExamQuestions">
+<AnchorPane prefHeight="606.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.QuestionsController">
    <children>
       <Label layoutX="243.0" layoutY="50.0" text="Thêm Bài Thi" underline="true">
          <font>
@@ -17,7 +17,7 @@
          </font>
       </Label>
       <Button fx:id="buttonADD" layoutX="115.0" layoutY="364.0" mnemonicParsing="false" onAction="#handleADD" prefHeight="32.0" prefWidth="101.0" text="Thêm Bài Thi" />
-      <Button layoutX="409.0" layoutY="364.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="92.0" text="Quay Lại" />
+      <Button layoutX="409.0" layoutY="364.0" mnemonicParsing="false" onAction="#cancelCreate" prefHeight="32.0" prefWidth="92.0" text="Quay Lại" />
       <Label layoutX="46.0" layoutY="91.0" text="Câu số : ">
          <font>
             <Font size="14.0" />

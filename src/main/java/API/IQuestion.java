@@ -9,4 +9,5 @@ import java.util.List;
 
 public interface IQuestion extends Remote {
     public boolean createQuestion(Questions questions) throws RemoteException;
+    public List<Questions> getQuestion() throws RemoteException;
 }
