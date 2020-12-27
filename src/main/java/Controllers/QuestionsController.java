@@ -1,5 +1,6 @@
 package Controllers;
 
+import Main.AdminClient;
 import Models.Questions;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -10,6 +11,8 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 
 public class ExamQuestions {
@@ -110,5 +113,9 @@ public class ExamQuestions {
         answer3.setText("");
         answer4.setText("");
         answer_true.setText("");
+    }
+    @FXML
+    private void cancelCreate() throws IOException {
+        AdminClient.setRoot("Admin");
     }
 }
