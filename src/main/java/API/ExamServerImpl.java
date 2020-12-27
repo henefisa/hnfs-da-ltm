@@ -1,7 +1,9 @@
 package API;
 
 import Main.UserClient;
+import Models.User;
 
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -23,7 +25,6 @@ public class ExamServerImpl extends UnicastRemoteObject implements IExamServer {
         }
         UUID uuid = UUID.randomUUID();
         Examiner examiner = new Examiner(uuid.toString(), iExam);
-        UserClient.setExaminer_id(uuid.toString());
         UserClient.setExam_id(id);
         exams.get(id).add(examiner);
         exams.get(id).forEach(e -> {

@@ -3,9 +3,17 @@ package Controllers;
 import API.ExamImpl;
 import API.IExam;
 import API.IExamServer;
+import Main.AdminClient;
 import Main.UserClient;
+import Models.Exam;
+import Models.Questions;
 import Models.User;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -22,13 +30,20 @@ public class IndexController {
     private Text fullName;
     @FXML
     private Text birthday;
-
     @FXML
-    private void startExam() {
+    private TableView<Exam> examTableView;
+    @FXML
+    private TableColumn<Exam,String> nameColumn;
+
+    private ObservableList<Exam> examData = FXCollections.observableArrayList();
+    @FXML
+    private void handleStart(ActionEvent actionEvent) {
+        Exam selectedExam = examTableView.getSelectionModel().getSelectedItem();
         try {
             IExam iExam = new ExamImpl();
             IExamServer iExamServer = (IExamServer) Naming.lookup("rmi://localhost:9090/examServer");
-            iExamServer.register("123", iExam); // FIXME: 12/27/2020
+            iExamServer.register(selectedExam.getId(), iExam);
+            UserClient.setExam_id(selectedExam.getId());
             UserClient.setRoot("Test");
         } catch (NotBoundException | IOException e) {
             e.printStackTrace();
@@ -42,5 +57,18 @@ public class IndexController {
             fullName.setText(user.getFullName());
             birthday.setText(user.getBirthday().toString());
         }
+
+
+        try {
+            IExam iExam = (IExam) Naming.lookup("rmi://localhost:9090/exam");
+            examData = FXCollections.observableArrayList(iExam.getExams());
+            examTableView.getItems().addAll(examData);
+        }catch (RemoteException | NotBoundException | MalformedURLException e){
+            e.printStackTrace();
+        }
+        nameColumn.setCellValueFactory(
+                cellData -> cellData.getValue().nameProperty());
     }
+
+
 }

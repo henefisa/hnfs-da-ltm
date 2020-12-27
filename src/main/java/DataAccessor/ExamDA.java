@@ -61,4 +61,33 @@ public class ExamDA {
         }
         return exams;
     }
+
+    public Exam getById(String e_id) {
+        String sql = "select * from Exam where id = ?";
+        Exam exam = null;
+        try {
+            ConnectDB.connect();
+            PreparedStatement statement = ConnectDB.getConnection().prepareStatement(sql);
+            statement.setString(1, e_id);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                String id = resultSet.getString("id");
+                String name = resultSet.getString("name");
+                int duration =resultSet.getInt("duration");
+                Date startTime=resultSet.getDate("startTime");
+                LocalDate date=startTime.toLocalDate();
+                Boolean checkTime=resultSet.getBoolean("checkTime");
+                exam = new Exam(id, name,duration,date,checkTime);
+            }
+
+            resultSet.close();
+            statement.close();
+
+            ConnectDB.disconnect();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return exam;
+    }
 }
