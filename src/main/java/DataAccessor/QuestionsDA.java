@@ -38,7 +38,7 @@ public class QuestionsDA {
 
     public List<Questions> getQuestions() {
         List<Questions> questions = new ArrayList<>();
-        String sql = "select * from Questions";
+        String sql = "select * from questions";
 
         try {
             ConnectDB.connect();
@@ -71,7 +71,7 @@ public class QuestionsDA {
     }
 
     public Questions getQuestion(String question_id) {
-        String sql = "select * from Questions where id = " + question_id;
+        String sql = "select * from questions where id =" + question_id;
         Questions questions = null;
         try {
             ConnectDB.connect();
@@ -100,12 +100,14 @@ public class QuestionsDA {
     }
 
     public List<Questions> getQuestionByExamId(String i_exam_id) {
-        String sql = "select * from Questions where exam_id = " + i_exam_id;
+
         List<Questions> questions = new ArrayList<>();
+        String sql = "select * from questions where exam_id = ?";
         try {
             ConnectDB.connect();
-            Statement statement = ConnectDB.getConnection().createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
+            PreparedStatement statement = ConnectDB.getConnection().prepareStatement(sql);
+            statement.setString(1, i_exam_id);
+            ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
                 String id = resultSet.getString("id");

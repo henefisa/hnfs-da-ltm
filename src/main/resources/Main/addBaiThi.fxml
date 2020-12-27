@@ -11,20 +11,19 @@
 
 <AnchorPane prefHeight="606.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.QuestionsController">
    <children>
-      <Label layoutX="243.0" layoutY="50.0" text="Thêm Bài Thi" underline="true">
+      <Label layoutX="243.0" layoutY="24.0" text="Thêm Bài Thi" underline="true">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Button fx:id="buttonADD" layoutX="115.0" layoutY="364.0" mnemonicParsing="false" onAction="#handleADD" prefHeight="32.0" prefWidth="101.0" text="Thêm Bài Thi" />
-      <Button layoutX="409.0" layoutY="364.0" mnemonicParsing="false" onAction="#cancelCreate" prefHeight="32.0" prefWidth="92.0" text="Quay Lại" />
-      <Label layoutX="46.0" layoutY="91.0" text="Câu số : ">
+      <Button fx:id="buttonADD" layoutX="173.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleADD" prefHeight="32.0" prefWidth="101.0" text="Thêm Bài Thi" />
+      <Label layoutX="44.0" layoutY="68.0" text="Câu số : ">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="id" layoutX="110.0" layoutY="88.0" prefHeight="25.0" prefWidth="45.0" text="1" />
-      <TextArea fx:id="question" layoutX="110.0" layoutY="122.0" prefHeight="112.0" prefWidth="455.0" />
+      <TextField fx:id="id" layoutX="108.0" layoutY="66.0" prefHeight="25.0" prefWidth="45.0" text="1" />
+      <TextArea fx:id="question" layoutX="108.0" layoutY="99.0" prefHeight="112.0" prefWidth="455.0" />
       <Label layoutX="46.0" layoutY="122.0" text="Câu hỏi">
          <font>
             <Font size="14.0" />
@@ -35,32 +34,31 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="122.0" layoutY="246.0" text="A" />
-      <Label layoutX="349.0" layoutY="246.0" text="C" />
-      <Label layoutX="123.0" layoutY="282.0" text="B" />
-      <Label layoutX="348.0" layoutY="282.0" text="D" />
-      <Label layoutX="47.0" layoutY="331.0" text="KẾT QUẢ">
+      <Label layoutX="123.0" layoutY="225.0" text="A" />
+      <Label layoutX="349.0" layoutY="225.0" text="C" />
+      <Label layoutX="124.0" layoutY="270.0" text="B" />
+      <Label layoutX="349.0" layoutY="270.0" text="D" />
+      <Label layoutX="47.0" layoutY="305.0" text="KẾT QUẢ">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="answer_true" layoutX="148.0" layoutY="329.0" prefHeight="25.0" prefWidth="62.0" />
-      <TextField fx:id="answer1" layoutX="149.0" layoutY="242.0" />
-      <TextField fx:id="answer2" layoutX="149.0" layoutY="278.0" />
-      <TextField fx:id="answer4" layoutX="380.0" layoutY="278.0" />
-      <Button layoutX="276.0" layoutY="364.0" mnemonicParsing="false" onAction="#handleClear" prefHeight="32.0" prefWidth="92.0" text="Xóa" />
-      <Label layoutX="44.0" layoutY="404.0" text="Danh Sách Câu Hỏi">
+      <TextField fx:id="answer_true" layoutX="149.0" layoutY="301.0" prefHeight="25.0" prefWidth="149.0" />
+      <TextField fx:id="answer1" layoutX="149.0" layoutY="221.0" />
+      <TextField fx:id="answer2" layoutX="149.0" layoutY="266.0" />
+      <TextField fx:id="answer4" layoutX="380.0" layoutY="266.0" />
+      <Button layoutX="363.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleClear" prefHeight="32.0" prefWidth="92.0" text="Xóa" />
+      <Label layoutX="49.0" layoutY="370.0" text="Danh Sách Câu Hỏi">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TableView fx:id="QuestionTable" layoutX="117.0" layoutY="424.0" prefHeight="145.0" prefWidth="462.0" style="-fx-border-color: #505050; -fx-border-radius: 5px;">
+      <TableView fx:id="questionTable" layoutX="109.0" layoutY="398.0" prefHeight="145.0" prefWidth="462.0" style="-fx-border-color: #505050; -fx-border-radius: 5px;">
         <columns>
-          <TableColumn fx:id="indexColumn" prefWidth="62.0" text="STT" />
-          <TableColumn fx:id="questionColumn" prefWidth="83.0" text="Tên Câu Hỏi" />
-            <TableColumn fx:id="questionTrueColumn" prefWidth="311.0" text="Đáp Án" />
+          <TableColumn fx:id="questionColumn" prefWidth="327.0" text="Tên Câu Hỏi" />
+            <TableColumn fx:id="questionTrueColumn" prefWidth="131.0" text="Đáp Án" />
         </columns>
       </TableView>
-      <TextField fx:id="answer3" layoutX="380.0" layoutY="243.0" />
+      <TextField fx:id="answer3" layoutX="380.0" layoutY="221.0" />
    </children>
 </AnchorPane>

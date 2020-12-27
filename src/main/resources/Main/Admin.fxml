@@ -24,5 +24,6 @@
             <TableColumn fx:id="checkTimeColumn" prefWidth="73.0" text="Trạng thái" />
         </columns>
       </TableView>
+      <Button layoutX="68.0" layoutY="361.0" mnemonicParsing="false" onAction="#updateExam" text="Xem câu hỏi" />
    </children>
 </AnchorPane>

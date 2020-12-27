@@ -12,12 +12,15 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -27,8 +30,19 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AdminController {
+
+    public TableView<Exam> getTableExam() {
+        return tableExam;
+    }
+    public static String examId;
+    public void setTableExam(TableView<Exam> tableExam) {
+        this.tableExam = tableExam;
+    }
+
     @FXML
     private TableView<Exam> tableExam;
     @FXML
@@ -63,7 +77,6 @@ public class AdminController {
            IExam iExam = (IExam) Naming.lookup("rmi://localhost:9090/exam");
            examData = FXCollections.observableArrayList(iExam.getExams());
            tableExam.getItems().addAll(examData);
-
        }catch (RemoteException | NotBoundException | MalformedURLException e){
            e.printStackTrace();
        }
@@ -76,15 +89,7 @@ public class AdminController {
         checkTimeColumn.setCellValueFactory(
                 cellData -> cellData.getValue().checkTimeProperty());
         addButtonToTableShowMath();
-    
-        tableExam.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> {
-                    try {
-                        showQuestionDetails(newValue);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                });
+
     }
 
     private void addButtonToTableShowMath() {
@@ -134,12 +139,24 @@ public class AdminController {
         tableExam.getColumns().add(colBtn);
     }
 
-
-    private void showQuestionDetails(Exam newValue) throws IOException{
-        AdminClient.setRoot("addBaiThi");
-    }
     private  void  showMath(Exam newExam) throws  IOException{
-//        AdminClient.setRoot("quanlydiemsinhvien");
+    }
 
+    public void updateExam(ActionEvent actionEvent) throws  IOException{
+        Exam selectedPerson = tableExam.getSelectionModel().getSelectedItem();
+        if (selectedPerson != null) {
+            examId=selectedPerson.getId();
+            AdminClient.showUpdateExam(selectedPerson);
+
+        }
+    }
+    public class RootLayoutController {
+        private AdminClient adminClient;
+        public void setAdminClient(AdminClient adminClient) {
+            this.adminClient = adminClient;
+        }
+        public AdminClient getAdminClient() {
+            return adminClient;
+        }
     }
 }

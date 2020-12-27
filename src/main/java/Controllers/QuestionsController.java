@@ -2,7 +2,9 @@ package Controllers;
 
 import API.IExam;
 import API.IQuestion;
+import DataAccessor.QuestionsDA;
 import Main.AdminClient;
+import Models.Exam;
 import Models.Questions;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -19,6 +21,7 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.util.UUID;
 
 
 public class QuestionsController {
@@ -42,7 +45,9 @@ public class QuestionsController {
     private TableColumn<Questions, String> questionTrueColumn;
     @FXML private  TableColumn<Questions,String> questionIndexColumn;
     private ObservableList<Questions> questionData = FXCollections.observableArrayList();
-    private Stage dialogStage;
+    private ObservableList<Exam> examData = FXCollections.observableArrayList();
+    private static String idExam;
+    private Stage stage;
     public QuestionsController() {
         questionData.addListener(new ListChangeListener<Questions>() {
             @Override
@@ -52,15 +57,18 @@ public class QuestionsController {
 
     }
     @FXML
-    private void initialize() throws RemoteException, NotBoundException, MalformedURLException {
+    private void initialize()  {
+        try {
 
-
+            QuestionsDA questionsDA=new QuestionsDA();
             IQuestion iQuestion = (IQuestion) Naming.lookup("rmi://localhost:9090/questions");
+            questionData = FXCollections.observableArrayList(iQuestion.getQuestionByExamID(AdminController.examId));
 
-            questionData=FXCollections.observableArrayList(iQuestion.getQuestions());
             questionTable.getItems().addAll(questionData);
-
-
+            System.out.println(questionData);
+        } catch (RemoteException | NotBoundException | MalformedURLException e) {
+            e.printStackTrace();
+        }
 
         questionColumn.setCellValueFactory(
                 cellData -> cellData.getValue().questionProperty());
@@ -80,6 +88,8 @@ public class QuestionsController {
             answer3.setText(newValue.getAnswer3());
             answer4.setText(newValue.getAnswer4());
             answer_true.setText(newValue.getAnswer_true());
+
+
         }else{
             id.setText("");
             question.setText("");
@@ -90,19 +100,13 @@ public class QuestionsController {
             answer_true.setText("");
         }
     }
-
-
-
-    public void setDialogStage(Stage dialogStage) {
-        this.dialogStage = dialogStage;
-    }
-
-
-
     public void handleADD(ActionEvent actionEvent)throws IOException {
-
+        UUID uuid = UUID.randomUUID();
         Questions tempPerson = new Questions(question.getText(),answer1.getText(),answer2.getText(),
-                answer3.getText(),answer4.getText(),answer_true.getText(),"13380362-6dba-4da6-a519-083af2decfef");
+                answer3.getText(),answer4.getText(),answer_true.getText(),AdminController.examId);
+//        questionData.addAll(tempPerson);
+        questionTable.getItems().addAll(tempPerson);
+
         boolean success = false;
         try {
             IQuestion iQuestion = (IQuestion) Naming.lookup("rmi://localhost:9090/questions");
@@ -112,8 +116,13 @@ public class QuestionsController {
         }
 
         if (success) {
-            System.out.println("Create success!");
-//            AdminClient.setRoot("Admin");
+            id.clear();
+            question.clear();
+            answer1.clear();
+            answer2.clear();
+            answer3.clear();
+            answer4.clear();
+            answer_true.clear();;
         }
     }
     public void Buttonok(KeyEvent keyEvent){
@@ -122,6 +131,10 @@ public class QuestionsController {
             keyEvent.consume();
         }
     }
+    public void createQuestion(Exam exam){
+        setIdExam(exam.getId());
+    }
+
 
     public void handleClear(ActionEvent actionEvent) {
         id.setText("");
@@ -134,6 +147,29 @@ public class QuestionsController {
     }
     @FXML
     private void cancelCreate() throws IOException {
-        AdminClient.setRoot("Admin");
+    stage.close();
+    }
+    public String getIdExam() {
+        return idExam;
+    }
+
+    public TableView<Questions> getQuestionTable() {
+        return questionTable;
+    }
+
+    public ObservableList<Questions> getQuestionData() {
+        return questionData;
+    }
+
+    public void setQuestionData(ObservableList<Questions> questionData) {
+        this.questionData = questionData;
+    }
+
+    public void setQuestionTable(TableView<Questions> questionTable) {
+        this.questionTable = questionTable;
+    }
+
+    public void setIdExam(String idExam) {
+        this.idExam = idExam;
     }
 }
