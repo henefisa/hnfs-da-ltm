@@ -4,6 +4,8 @@ module LTMDA {
     requires java.sql;
     requires java.rmi;
     requires bcrypt;
+    requires rt;
+    requires jfxrt;
 
     opens Main to javafx.fxml;
     exports Main;
