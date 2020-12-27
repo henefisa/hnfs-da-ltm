@@ -8,8 +8,7 @@ import java.util.List;
 
 public interface IExam extends Remote {
     boolean createExam(Exam exam) throws RemoteException;
-
     List<Exam> getExams() throws RemoteException;
-
     void printMessage(String message) throws RemoteException;
+
 }

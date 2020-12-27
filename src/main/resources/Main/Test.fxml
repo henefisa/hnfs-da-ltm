@@ -8,15 +8,14 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="439.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.Main">
+<AnchorPane prefHeight="439.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.TestController">
    <children>
       <Label layoutX="31.0" layoutY="28.0" text="Thí Sinh :">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="102.0" layoutY="28.0" text="VÕ NGỌC CHÍNH" textFill="#eb0a0a">
+      <Label layoutX="102.0" layoutY="28.0" textFill="#eb0a0a">
          <font>
             <Font size="14.0" />
          </font>
@@ -26,7 +25,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="339.0" layoutY="28.0" text="3120218017" textFill="#ee0808">
+      <Label layoutX="339.0" layoutY="28.0" textFill="#ee0808">
          <font>
             <Font size="14.0" />
          </font>
@@ -38,7 +37,7 @@
       </Label>
       <Pane layoutX="31.0" layoutY="90.0" prefHeight="152.0" prefWidth="528.0" style="-fx-background-color: white; -fx-border-color: #505050; -fx-border-radius: 5px;">
          <children>
-            <Label layoutX="8.0" layoutY="14.0" text="Câu hỏi đầu tiên nha em :&gt;" />
+            <Label layoutX="8.0" layoutY="14.0" />
          </children>
       </Pane>
       <Label layoutX="31.0" layoutY="255.0" text="Đáp Án" underline="true">
@@ -46,20 +45,20 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <RadioButton layoutX="95.0" layoutY="288.0" mnemonicParsing="false" onAction="#a" text="Đáp án A">
+      <RadioButton layoutX="95.0" layoutY="288.0" mnemonicParsing="false">
          <toggleGroup>
             <ToggleGroup fx:id="dapan" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton layoutX="261.0" layoutY="288.0" mnemonicParsing="false" onAction="#a" text="Đáp án B" toggleGroup="$dapan" />
-      <RadioButton layoutX="95.0" layoutY="327.0" mnemonicParsing="false" onAction="#a" text="Đáp án C" toggleGroup="$dapan" />
-      <RadioButton layoutX="260.0" layoutY="327.0" mnemonicParsing="false" onAction="#a" text="Đáp án D" toggleGroup="$dapan" />
+      <RadioButton layoutX="261.0" layoutY="288.0" mnemonicParsing="false" toggleGroup="$dapan" />
+      <RadioButton layoutX="95.0" layoutY="327.0" mnemonicParsing="false" toggleGroup="$dapan" />
+      <RadioButton layoutX="260.0" layoutY="327.0" mnemonicParsing="false" toggleGroup="$dapan" />
       <Label layoutX="439.0" layoutY="288.0" text="Số Câu :">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="517.0" layoutY="287.0" text="1/10">
+      <Label layoutX="517.0" layoutY="287.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -69,12 +68,12 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="527.0" layoutY="315.0" text="3 s" textFill="#e80b0b">
+      <Label layoutX="527.0" layoutY="315.0" textFill="#e80b0b">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Button layoutX="29.0" layoutY="364.0" mnemonicParsing="false" text="Qua Câu" />
+      <Button layoutX="29.0" layoutY="364.0" mnemonicParsing="false" text="Câu tiếp theo" />
       <Button layoutX="475.0" layoutY="364.0" mnemonicParsing="false" text="Dừng Bài Thi" />
       <Label layoutX="29.0" layoutY="402.0" text="Mỗi câu trong bài thi tương ứng 10 điểm " textFill="#096eeb" />
       <Label layoutX="446.0" layoutY="28.0" text="Số Điểm :">
@@ -82,7 +81,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="509.0" layoutY="28.0" text="10" textFill="#f20909">
+      <Label layoutX="509.0" layoutY="28.0" textFill="#f20909">
          <font>
             <Font size="14.0" />
          </font>
