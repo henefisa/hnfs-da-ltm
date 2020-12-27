@@ -8,6 +8,7 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 public interface IQuestion extends Remote {
-    public boolean createQuestion(Questions questions) throws RemoteException;
-    public List<Questions> getQuestion() throws RemoteException;
+    boolean createQuestion(Questions questions) throws RemoteException;
+    List<Questions> getQuestions() throws RemoteException;
+    Questions getQuestion(String id) throws RemoteException;
 }

@@ -9,7 +9,6 @@ module LTMDA {
     exports Main;
     opens Controllers to javafx.fxml;
     exports Controllers;
-    exports Server;
     exports API;
     exports Models;
 }

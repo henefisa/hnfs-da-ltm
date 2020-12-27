@@ -20,7 +20,12 @@ public class QuestionImpl extends UnicastRemoteObject implements IQuestion {
     }
 
     @Override
-    public List<Questions> getQuestion() throws RemoteException {
+    public List<Questions> getQuestions() throws RemoteException {
         return questionsDA.getQuestions();
+    }
+
+    @Override
+    public Questions getQuestion(String id) throws RemoteException {
+        return questionsDA.getQuestion(id);
     }
 }

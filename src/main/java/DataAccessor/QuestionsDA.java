@@ -38,7 +38,7 @@ public class QuestionsDA {
 
     public List<Questions> getQuestions() {
         List<Questions> questions = new ArrayList<>();
-        String sql = "select * from question where exam_id ='13380362-6dba-4da6-a519-083af2decfef'   ";
+        String sql = "select * from Questions";
 
         try {
             ConnectDB.connect();
@@ -63,6 +63,35 @@ public class QuestionsDA {
             resultSet.close();
             statement.close();
 
+            ConnectDB.disconnect();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return questions;
+    }
+
+    public Questions getQuestion(String question_id) {
+        String sql = "select * from Questions where id = " + question_id;
+        Questions questions = null;
+        try {
+            ConnectDB.connect();
+            Statement statement = ConnectDB.getConnection().createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            if (resultSet.next()) {
+                String id = resultSet.getString("id");
+                String question = resultSet.getString("question");
+                String answer1 = resultSet.getString("answer1");
+                String answer2 = resultSet.getString("answer2");
+                String answer3 = resultSet.getString("answer3");
+                String answer4 = resultSet.getString("answer4");
+                String answer_true = resultSet.getString("answer_true");
+                String exam_id = resultSet.getString("exam_id");
+                questions = new Questions(id, question, answer1, answer2, answer3, answer4, answer_true, exam_id);
+
+            }
+            resultSet.close();
+            statement.close();
             ConnectDB.disconnect();
         } catch (SQLException e) {
             e.printStackTrace();

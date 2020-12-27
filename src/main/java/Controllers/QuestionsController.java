@@ -57,8 +57,7 @@ public class QuestionsController {
 
             IQuestion iQuestion = (IQuestion) Naming.lookup("rmi://localhost:9090/questions");
 
-            questionData=FXCollections.observableArrayList(iQuestion.getQuestion());
-        System.out.println(questionData);
+            questionData=FXCollections.observableArrayList(iQuestion.getQuestions());
             questionTable.getItems().addAll(questionData);
 
 
