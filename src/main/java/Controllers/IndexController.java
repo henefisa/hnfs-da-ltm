@@ -12,6 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
@@ -39,15 +40,23 @@ public class IndexController {
     @FXML
     private void handleStart(ActionEvent actionEvent) {
         Exam selectedExam = examTableView.getSelectionModel().getSelectedItem();
-        try {
-            IExam iExam = new ExamImpl();
-            IExamServer iExamServer = (IExamServer) Naming.lookup("rmi://localhost:9090/examServer");
-            iExamServer.register(selectedExam.getId(), iExam);
-            UserClient.setExam_id(selectedExam.getId());
-            UserClient.setRoot("Test");
-        } catch (NotBoundException | IOException e) {
-            e.printStackTrace();
+        if(selectedExam==null){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Thông báo");
+            alert.setHeaderText("Chọn Bài Thi Để Vào Thi");
+            alert.showAndWait();
+        }else{
+            try {
+                IExam iExam = new ExamImpl();
+                IExamServer iExamServer = (IExamServer) Naming.lookup("rmi://localhost:9090/examServer");
+                iExamServer.register(selectedExam.getId(), iExam);
+                UserClient.setExam_id(selectedExam.getId());
+                UserClient.setRoot("Test");
+            } catch (NotBoundException | IOException e) {
+                e.printStackTrace();
+            }
         }
+
     }
 
     public void initialize() {

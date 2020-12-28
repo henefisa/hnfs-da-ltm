@@ -71,6 +71,7 @@ public class UserClient extends Application {
 
         scene = new Scene(loadFXML("login"), 640, 480);
         stage.setScene(scene);
+        stage.setTitle("Trang chủ");
 //        stage.setOnCloseRequest(e -> {
 //            try {
 //                e.consume();

@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="439.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.TestController">
    <children>
-      <Label layoutX="31.0" layoutY="28.0" text="Thí Sinh :">
+      <Label layoutX="31.0" layoutY="28.0" text="Thí Sinh :" underline="true">
          <font>
             <Font size="14.0" />
          </font>
@@ -20,7 +20,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="272.0" layoutY="28.0" text="Ngày sinh">
+      <Label layoutX="272.0" layoutY="28.0" text="FullName" underline="true">
          <font>
             <Font size="14.0" />
          </font>
@@ -37,7 +37,7 @@
       </Label>
       <Pane layoutX="31.0" layoutY="90.0" prefHeight="152.0" prefWidth="528.0" style="-fx-background-color: white; -fx-border-color: #505050; -fx-border-radius: 5px;">
          <children>
-            <Label fx:id="cauhoi" layoutX="8.0" layoutY="6.0" text="Label" />
+            <Label fx:id="cauhoi" layoutX="8.0" layoutY="6.0" text="    " />
          </children>
       </Pane>
       <Label layoutX="31.0" layoutY="255.0" text="Đáp Án" underline="true">
@@ -53,7 +53,7 @@
       <RadioButton fx:id="ans_2" layoutX="261.0" layoutY="288.0" mnemonicParsing="false" toggleGroup="$dapan" />
       <RadioButton fx:id="ans_3" layoutX="95.0" layoutY="327.0" mnemonicParsing="false" toggleGroup="$dapan" />
       <RadioButton fx:id="ans_4" layoutX="260.0" layoutY="327.0" mnemonicParsing="false" toggleGroup="$dapan" />
-      <Label layoutX="439.0" layoutY="288.0" text="Số Câu :">
+      <Label layoutX="439.0" layoutY="288.0" text="Câu số:">
          <font>
             <Font size="14.0" />
          </font>
@@ -80,14 +80,27 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="an_1" layoutX="126.0" layoutY="288.0" text=" " />
-      <Label fx:id="an_2" layoutX="295.0" layoutY="288.0" text=" " />
-      <Label fx:id="an_3" layoutX="122.0" layoutY="329.0" prefHeight="20.0" prefWidth="46.0" text=" " />
-      <Label fx:id="an_4" layoutX="295.0" layoutY="331.0" text=" " />
-      <Label fx:id="nameUser" layoutX="103.0" layoutY="30.0" text=" " />
-      <Label fx:id="maUser" layoutX="347.0" layoutY="30.0" text=" " />
+      <Label fx:id="an_1" layoutX="126.0" layoutY="288.0" prefHeight="17.0" prefWidth="130.0" text=" " />
+      <Label fx:id="an_2" layoutX="295.0" layoutY="288.0" prefHeight="17.0" prefWidth="137.0" text=" " />
+      <Label fx:id="an_3" layoutX="122.0" layoutY="329.0" prefHeight="20.0" prefWidth="130.0" text=" " />
+      <Label fx:id="an_4" layoutX="295.0" layoutY="331.0" prefHeight="17.0" prefWidth="137.0" text=" " />
+      <Label fx:id="nameUser" layoutX="103.0" layoutY="30.0" prefHeight="17.0" prefWidth="157.0" text=" " />
+      <Label fx:id="maUser" layoutX="341.0" layoutY="30.0" prefHeight="17.0" prefWidth="120.0" text=" " />
       <Label layoutX="71.0" layoutY="368.0" text="Điểm" />
-      <Label fx:id="diem" layoutX="108.0" layoutY="368.0" text="Label" />
+      <Label fx:id="diem" layoutX="117.0" layoutY="363.0" prefHeight="27.0" prefWidth="28.0" text="0">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="476.0" layoutY="30.0" text="Sô câu" underline="true">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="SoCauHoiExam" layoutX="534.0" layoutY="25.0" prefHeight="26.0" prefWidth="28.0" text="   " textFill="#f81111">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
    
    </children>
 </AnchorPane>

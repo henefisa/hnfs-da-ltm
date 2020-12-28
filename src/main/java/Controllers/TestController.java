@@ -65,7 +65,10 @@ public class TestController {
     private Label soCau;
     @FXML
     private Label diem;
+    private  int soCauHoi;
     public   static  String kq;
+    @FXML
+    private  Label SoCauHoiExam;
     private ToggleGroup toggleGroup = new ToggleGroup();
     private Timer timer;
     private Timer questionTimer;
@@ -106,6 +109,8 @@ public class TestController {
         try {
             IQuestion iQuestion = (IQuestion) Naming.lookup("rmi://localhost:9090/questions");
             questionsList = iQuestion.getQuestionByExamID(UserClient.getExam_id());
+            soCauHoi=questionsList.size();
+            SoCauHoiExam.setText(String.valueOf(soCauHoi));
             renderAnswer();
         } catch (RemoteException | NotBoundException | MalformedURLException e) {
             e.printStackTrace();

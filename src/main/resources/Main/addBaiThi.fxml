@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="606.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.QuestionsController">
+<AnchorPane prefHeight="673.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.QuestionsController">
    <children>
       <Label layoutX="243.0" layoutY="24.0" text="Thêm Bài Thi" underline="true">
          <font>
@@ -53,7 +53,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TableView fx:id="questionTable" layoutX="109.0" layoutY="398.0" prefHeight="145.0" prefWidth="462.0" style="-fx-border-color: #505050; -fx-border-radius: 5px;">
+      <TableView fx:id="questionTable" layoutX="109.0" layoutY="398.0" prefHeight="228.0" prefWidth="462.0" style="-fx-border-color: #505050; -fx-border-radius: 5px;">
         <columns>
           <TableColumn fx:id="questionColumn" prefWidth="327.0" text="Tên Câu Hỏi" />
             <TableColumn fx:id="questionTrueColumn" prefWidth="131.0" text="Đáp Án" />
